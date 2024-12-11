@@ -1,5 +1,5 @@
 import Header from "@/components/header";
-import { modificarProfesorApi, obtenerEntradaApi } from "@/lib/actions";
+import { modificarPacienteApi, obtenerEntradaApi } from "@/lib/actions";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -8,7 +8,7 @@ async function editApiPaciente({ params }) {
 
 
     const { id } = await params
-    const profesor = await obtenerEntradaApi("pacientes", id);
+    const paciente = await obtenerEntradaApi("pacientes", id);
 
     async function modificarPaciente(formData) {
       "use server";
@@ -22,8 +22,8 @@ async function editApiPaciente({ params }) {
     
     <Header />
 
-    <h1 className="text-5xl text-center pt-10">EDITAR PROFESOR API</h1>
-    <p className="text-center pb-4"><Link className="text-blue-500  hover:text-blue-950" href={`/api/profesores/`}>Volver</Link></p>
+    <h1 className="text-5xl text-center pt-10">EDITAR PACIENTE API</h1>
+    <p className="text-center pb-4"><Link className="text-blue-500  hover:text-blue-950" href={`/api/pacientes/`}>Volver</Link></p>
 
     <form action={modificarPaciente} className="space-y-4 p-4 border rounded-md shadow-md">
       <input type="hidden" name="id" defaultValue={id} />
@@ -35,7 +35,7 @@ async function editApiPaciente({ params }) {
             Nombre
           </label>
           <input 
-            defaultValue={profesor.nombre}
+            defaultValue={paciente.nombre}
             type="text"
             name="name"
             placeholder="Nombre"
@@ -50,7 +50,7 @@ async function editApiPaciente({ params }) {
             Especialidad
           </label>
           <input
-            defaultValue={profesor.localidad}
+            defaultValue={paciente.localidad}
             type="text"
             name="localidad"
             placeholder="Localidad"
@@ -65,7 +65,7 @@ async function editApiPaciente({ params }) {
             Estado civil
           </label>
           <input
-            defaultValue={profesor.fechaNacimiento} 
+            defaultValue={paciente.fechaNacimiento} 
             type="date"
             name="fechaNacimiento"
             id="fechaNacimiento"

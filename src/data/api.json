@@ -15,9 +15,9 @@
   ],
   "pacientes": [
     {
-      "nombre": "antonio",
-      "localidad": "Lugo",
-      "fechaNacimiento": "2012-01-23",
+      "nombre": "antonia",
+      "localidad": "Lugaer",
+      "fechaNacimiento": "2012-01-26",
       "id": "5b9c"
     },
     {
@@ -31,6 +31,12 @@
       "localidad": "Madrid",
       "fechaNacimiento": "1891-12-23",
       "id": "f9b7"
+    },
+    {
+      "id": "a8d5",
+      "nombre": "jesis",
+      "localidad": "fdsfasfdsf",
+      "fechaNacimiento": "2024-12-05"
     }
   ],
   "usuarios": [
