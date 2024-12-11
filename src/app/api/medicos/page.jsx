@@ -1,5 +1,5 @@
 import Header from "@/components/header";
-import { obtenerDatoApi, eliminarDatoApi, crearAlumnoApi } from "@/lib/actions";
+import { obtenerDatoApi, eliminarDatoApi, crearMedicoApi } from "@/lib/actions";
 import { Eye, ShieldX, Pencil } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
@@ -7,8 +7,8 @@ import { redirect } from "next/navigation";
 
 async function eliminarMedico(formData) {
   "use server";
-  await eliminarDatoApi("alumnos", formData);
-  revalidatePath("/api/alumnos");
+  await eliminarDatoApi("medicos", formData);
+  revalidatePath("/api/medicos");
 }
 
 async function modificarMedico(formData) {
@@ -23,7 +23,7 @@ async function verMedico(formData) {
 
 async function crearMedico(formData) {
   "use server";
-  await crearAlumnoApi(formData);
+  await crearMedicoApi(formData);
   revalidatePath("/api/medicos");
 }
 
@@ -63,36 +63,35 @@ async function medicosApi() {
         </div>
         <div>
           <label
-            htmlFor="localidad"
+            htmlFor="especialidad"
             className="block text-sm font-medium text-gray-700"
           >
-            Localidad
+            Especialidad
           </label>
           <input
             type="text"
-            name="localidad"
-            placeholder="Localidad"
+            name="especialidad"
+            placeholder="especialidad"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
         <div>
           <label
-            htmlFor="fechanacimiento"
+            htmlFor="perfil"
             className="block text-sm font-medium text-gray-700"
           >
-            Fecha de Nacimiento
+            Perfil
           </label>
-          <input
-            type="date"
-            name="fechanacimiento"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+          <select name="perfil" id="perfil" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option value="ESPECIALISTA">ESPECIALISTA</option>
+            <option value="RESIDENTE">RESIDENTE</option>
+          </select>
         </div>
         <button
           type="submit"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          Nuevo Alumno
+          Nuevo Medico
         </button>
         <button
           type="reset"

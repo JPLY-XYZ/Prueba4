@@ -1,16 +1,16 @@
 {
   "medicos": [
     {
-      "id": "677f",
-      "nombre": "alfredo",
-      "especialidad": "traumatologo",
-      "perfil": "RESIDENTE"      
+      "nombre": "alfredA",
+      "especialidad": "traumatologoDAD",
+      "perfil": "RESIDENTE",
+      "id": "677f"
     },
     {
       "id": "69f2",
       "nombre": "manuela",
       "especialidad": "ginecologa",
-      "perfil": "ESPECIALISTA" 
+      "perfil": "ESPECIALISTA"
     },
     {
       "id": "a00f",
