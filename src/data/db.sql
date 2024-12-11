@@ -26,14 +26,14 @@ CREATE TABLE pacientes (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(200) NOT NULL,
     localidad VARCHAR(200),
-    fecha_nacimiento DATE,
+    fechaNacimiento DATE,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
 
-INSERT INTO pacientes (nombre, localidad, fecha_nacimiento) 
+INSERT INTO pacientes (nombre, localidad, fechaNacimiento) 
 VALUES 
  ('antonio', 'Sevilla', '2023-10-10'),
  ('maria', 'Jaen', '1998-02-29'),
