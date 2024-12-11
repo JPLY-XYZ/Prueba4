@@ -42,13 +42,13 @@
   "usuarios": [
     {
       "name": "Medico 1",
-      "email": "medico1",
+      "user-name": "medico1",
       "passwd": "medico1",
       "id": "b7fe"
     },
     {
       "name": "Medico 2",
-      "email": "medico2",
+      "user-name": "medico2",
       "passwd": "medico2",
       "id": "3201"
     }

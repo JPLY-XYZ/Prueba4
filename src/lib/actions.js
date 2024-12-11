@@ -10,21 +10,20 @@ import mysql from '@/lib/mysql'
 export async function login(formData) {
   const LOGIN_URL = '/'
 
-  const email = formData.get('email')
+  const userName = formData.get('userName')
   const pass = formData.get('pass')
   const callbackUrl = formData.get('callbackUrl') || LOGIN_URL
 
-  if (!await validarUsuario(email, pass)) {
+  if (!await validarUsuario(userName, pass)) {
     return
   } else {
-    await setCookie('session', { email, pass })
+    console.log("hola estas entrando")
+    await setCookie('session', { userName, pass })
     redirect(callbackUrl);
   }
 
 
 }
-
-
 
 export async function logout() {
   deleteCookie('session')
@@ -32,32 +31,9 @@ export async function logout() {
 }
 
 
-
-export async function nuevoUsuario(formData) {
-  "use server";
-  const [name, email, passwd] = formData.values();
-
-  const response = await fetch("http://localhost:4000/usuarios", {
-    method: "POST",
-    body: JSON.stringify({
-      email,
-      passwd,
-      createdAt: new Date().toISOString(),
-    }),
-  });
-  const data = await response.json();
-
-  await setCookie('session', { email, passwd })
-  redirect("/");
-}
-
-async function validarUsuario(email, passwd) {
-
-  const response = await fetch(`http://localhost:4000/usuarios?email=${email}&passwd=${passwd}`)
+async function validarUsuario(userName, passwd) {
+  const response = await fetch(`http://localhost:4000/usuarios?user-name=${userName || null}&passwd=${passwd || null}`)
   const usuario = await response.json()
-
-  console.log('usuario.length = ', usuario.length)
-
   if (usuario.length > 0) {
     return true
   }

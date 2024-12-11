@@ -16,12 +16,11 @@ async function Header() {
             )}
             {!session && (
                 <div className="flex flex-row gap-4 ml-auto">
-                    <a href="newAcount" className="p-2 bg-amber-600 rounded-md "> Nueva cuenta </a>
                     <a href="login" className="p-2 bg-amber-600 rounded-md"> Iniciar sesion </a>
                 </div>
             )}
 
-            {session && <div className="flex flex-row gap-4 ml-auto"><Logout /> </div>}
+            {session && <div className="flex flex-row gap-4 ml-auto"> <Logout /> </div>}
 
         </header>
         <div className=" translate-y-[-250%] w-10 m-[0_auto] h-5  flex content-center items-center "><Link href="/" className="text-center m-[0_auto]"> <Home className=" w-30 hover:text-white" /></Link></div>

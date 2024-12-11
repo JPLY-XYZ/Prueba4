@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getCookie, updateCookie } from "@/lib/cookies";
 
 const LOGIN_URL = '/login';
-const PUBLIC_URL = ["/", "/login", "/newAcount"];
+const PUBLIC_URL = ["/", "/login"];
 
 const isPublicUrl = (pathname) => PUBLIC_URL.some((url) => pathname === url);
 
