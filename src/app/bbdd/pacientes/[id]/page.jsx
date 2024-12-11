@@ -10,7 +10,6 @@ async function PacienteBBDDMasInfo({ params }) {
     const [paciente] = await  SQLQuery(query);
 
 
-    console.log(alumno);
 
     return ( <>
     

@@ -5,39 +5,39 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-async function eliminarProfesor(formData) {
+async function eliminarMedico(formData) {
   "use server";
   await SQLQuery("delete from alunos where id=" + formData.get("id"));
-  revalidatePath("/api/profesores");
+  revalidatePath("/api/medicos");
 }
 
-async function modificarProfesor(formData) {
+async function modificarMedico(formData) {
   "use server";
-  redirect(`/bbdd/profesores/${formData.get("id")}/edit`);
+  redirect(`/bbdd/medicos/${formData.get("id")}/edit`);
 }
 
-async function verProfesor(formData) {
+async function verMedico(formData) {
   "use server";
-  redirect(`/bbdd/profesores/${formData.get("id")}`);
+  redirect(`/bbdd/medicos/${formData.get("id")}`);
 }
 
-async function crearProfesor(formData) {
+async function crearMedico(formData) {
   "use server";
-  const query = "insert into alunos (nombre, localidad, fechanacimiento) values ('" + formData.get("name") + "', '" + formData.get("localidad") + "', '" + formData.get("fechanacimiento") + "')";
+  const query = "insert into medicos (nombre, especialidad, perfil) values ('" + formData.get("name") + "', '" + formData.get("especialidad") + "', '" + formData.get("perfil") + "')";
   await SQLQuery(query);
-  revalidatePath("/bbdd/profesores");
+  revalidatePath("/bbdd/medicos");
 }
 
-async function profesoresBBDD() {
+async function medicosBBDD() {
 
   const query = "select * from alunos";
-  const datosAlumnos = await  SQLQuery(query);
+  const datosMedicos = await  SQLQuery(query);
 
   return (
     <>
       <Header />
 
-      <h1 className="text-5xl text-center pt-10">BBDD DE ALUMNOS</h1>
+      <h1 className="text-5xl text-center pt-10">BBDD DE MEDICOS</h1>
       <p className="text-center pb-4">
         <Link className="text-blue-500  hover:text-blue-950" href={`/api/`}>
           Volver
@@ -47,7 +47,7 @@ async function profesoresBBDD() {
 <br /><br />
 
       <form
-        action={crearAlumno}
+        action={crearMedico}
         className="space-y-4 p-4 border rounded-md shadow-md"
       >
         <div>
@@ -66,36 +66,35 @@ async function profesoresBBDD() {
         </div>
         <div>
           <label
-            htmlFor="localidad"
+            htmlFor="especialidad"
             className="block text-sm font-medium text-gray-700"
           >
-            Localidad
+            Especialidad
           </label>
           <input
             type="text"
-            name="localidad"
-            placeholder="Localidad"
+            name="especialidad"
+            placeholder="especialidad"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
         <div>
           <label
-            htmlFor="fechanacimiento"
+            htmlFor="perfil"
             className="block text-sm font-medium text-gray-700"
           >
-            Fecha de Nacimiento
+            Perfil
           </label>
-          <input
-            type="date"
-            name="fechanacimiento"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+          <select name="perfil" id="perfil" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option value="ESPECIALISTA">ESPECIALISTA</option>
+            <option value="RESIDENTE">RESIDENTE</option>
+          </select>
         </div>
         <button
           type="submit"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          Nuevo Alumno
+          Nuevo Medico
         </button>
         <button
           type="reset"
@@ -107,27 +106,27 @@ async function profesoresBBDD() {
 
       <br /><br />
 
-      {datosAlumnos.map((alumno) => (
+      {datosMedicos.map((medico) => (
         <div
           className="flex flex-row gap-4  pt-10 justify-center"
-          key={alumno.id}
+          key={medico.id}
         >
-          <p>{alumno.nombre}</p>
+          <p>{medico.nombre}</p>
           <form>
-            <input type="hidden" name="id" value={alumno.id} />
-            <button formAction={eliminarAlumno} title="ELIMINAR">
+            <input type="hidden" name="id" value={medico.id} />
+            <button formAction={eliminarMedico} title="ELIMINAR">
               <ShieldX />
             </button>
           </form>
           <form>
-            <input type="hidden" name="id" value={alumno.id} />
-            <button formAction={modificarAlumno} title="EDITAR">
+            <input type="hidden" name="id" value={medico.id} />
+            <button formAction={modificarMedico} title="EDITAR">
               <Pencil />
             </button>
           </form>
           <form>
-            <input type="hidden" name="id" value={alumno.id} />
-            <button formAction={verAlumno} title="VER">
+            <input type="hidden" name="id" value={medico.id} />
+            <button formAction={verMedico} title="VER">
               <Eye />
             </button>
           </form>
@@ -137,4 +136,4 @@ async function profesoresBBDD() {
   );
 }
 
-export default profesoresBBDD;
+export default medicosBBDD;
