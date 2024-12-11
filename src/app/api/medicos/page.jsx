@@ -28,7 +28,7 @@ async function crearMedico(formData) {
 }
 
 async function medicosApi() {
-  const datosAlumnos = await obtenerDatoApi("medicos");
+  const datosMedicos = await obtenerDatoApi("medicos");
 
   return (
     <>
@@ -103,26 +103,26 @@ async function medicosApi() {
 
       <br /><br />
 
-      {datosAlumnos.map((alumno) => (
+      {datosMedicos.map((medico) => (
         <div
           className="flex flex-row gap-4  pt-10 justify-center"
-          key={alumno.id}
+          key={medico.id}
         >
-          <p>{alumno.nombre}</p>
+          <p>{medico.nombre}</p>
           <form>
-            <input type="hidden" name="id" value={alumno.id} />
+            <input type="hidden" name="id" value={medico.id} />
             <button formAction={eliminarMedico} title="ELIMINAR">
               <ShieldX />
             </button>
           </form>
           <form>
-            <input type="hidden" name="id" value={alumno.id} />
+            <input type="hidden" name="id" value={medico.id} />
             <button formAction={modificarMedico} title="EDITAR">
               <Pencil />
             </button>
           </form>
           <form>
-            <input type="hidden" name="id" value={alumno.id} />
+            <input type="hidden" name="id" value={medico.id} />
             <button formAction={verMedico} title="VER">
               <Eye />
             </button>

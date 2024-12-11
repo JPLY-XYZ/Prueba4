@@ -61,7 +61,7 @@ export async function eliminarDatoApi(endpoint, formData) {
 
 }
 
-//ALUMNOS
+//MEDICOS
 
 export async function crearMedicoApi(formData) {
   const response = await fetch(`http://localhost:4000/medicos`, {
@@ -88,30 +88,30 @@ export async function modificarMedicoApi(formData) {
 }
 
 
-//PROFESORES
+//PACIENTES
 
-export async function crearProfesorApi(formData) {
-  const response = await fetch(`http://localhost:4000/profesores`, {
+export async function crearPacienteApi(formData) {
+  const response = await fetch(`http://localhost:4000/pacientes`, {
     method: "POST",
     body: JSON.stringify({
       nombre: formData.get('name'),
-      especialidad: formData.get('especialidad'),
-      estadocivil: formData.get('estadocivil')
+      localidad: formData.get('localidad'),
+      fechaNacimiento: formData.get('fechaNacimiento')
     }),
   });
 }
 
-export async function modificarProfesorApi(formData) {
+export async function modificarPacienteApi(formData) {
 
   const id = formData.get('id')
   console.log('id = ', id)
 
-  const response = await fetch(`http://localhost:4000/profesores/${id}`, {
+  const response = await fetch(`http://localhost:4000/pacientes/${id}`, {
     method: "PUT",
     body: JSON.stringify({
       nombre: formData.get('name'),
-      especialidad: formData.get('especialidad'),
-      estadocivil: formData.get('estadocivil')
+      localidad: formData.get('localidad'),
+      fechaNacimiento: formData.get('fechaNacimiento')
     }),
   });
 }

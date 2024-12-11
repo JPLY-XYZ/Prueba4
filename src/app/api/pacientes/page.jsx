@@ -1,52 +1,55 @@
 import Header from "@/components/header";
-import { obtenerDatoApi, eliminarDatoApi, crearProfesorApi } from "@/lib/actions";
+import {
+  obtenerDatoApi,
+  eliminarDatoApi,
+  crearPacienteApi,
+} from "@/lib/actions";
 import { Eye, ShieldX, Pencil } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-async function eliminarProfesor(formData) {
+async function eliminarPaciente(formData) {
   "use server";
-  await eliminarDatoApi("profesores", formData);
-  revalidatePath("/api/profesores");
+  await eliminarDatoApi("pacientes", formData);
+  revalidatePath("/api/pacientes");
 }
 
-async function modificarProfesor(formData) {
+async function modificarPaciente(formData) {
   "use server";
-  redirect(`/api/profesores/${formData.get("id")}/edit`);
+  redirect(`/api/pacientes/${formData.get("id")}/edit`);
 }
 
-async function verProfesor(formData) {
+async function verPaciente(formData) {
   "use server";
-  redirect(`/api/profesores/${formData.get("id")}`);
+  redirect(`/api/pacientes/${formData.get("id")}`);
 }
 
-async function crearProfesor(formData) {
+async function crearPaciente(formData) {
   "use server";
-  await crearProfesorApi(formData);
-  revalidatePath("/api/profesores");
+  await crearPacienteApi(formData);
+  revalidatePath("/api/pacientes");
 }
 
-async function profesoresApi() {
-  const datosProfesores = await obtenerDatoApi("profesores");
-
-  console.log("datosProfesores = ", datosProfesores);
+async function pacientesApi() {
+  const datosPacientes = await obtenerDatoApi("pacientes");
 
   return (
     <>
       <Header />
 
-      <h1 className="text-5xl text-center pt-10">API DE profesores</h1>
+      <h1 className="text-5xl text-center pt-10">API DE PACIENTES</h1>
       <p className="text-center pb-4">
         <Link className="text-blue-500  hover:text-blue-950" href={`/api/`}>
           Volver
         </Link>
       </p>
 
-<br /><br />
+      <br />
+      <br />
 
       <form
-        action={crearProfesor}
+        action={crearPaciente}
         className="space-y-4 p-4 border rounded-md shadow-md"
       >
         <div>
@@ -65,40 +68,37 @@ async function profesoresApi() {
         </div>
         <div>
           <label
-            htmlFor="especialidad"
+            htmlFor="localidad"
             className="block text-sm font-medium text-gray-700"
           >
-            Especialidad
+            Localidad
           </label>
           <input
             type="text"
-            name="especialidad"
-            placeholder="Especialidad"
+            name="localidad"
+            placeholder="localidad"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
         <div>
           <label
-            htmlFor="estadocivil"
+            htmlFor="fecha-nacimiento"
             className="block text-sm font-medium text-gray-700"
           >
-            Estado civil
+            Fecha Nacimiento
           </label>
-          <select
-            name="estadocivil"
+          <input
+            type="date"
+            name="fechaNacimiento"
+            id="fechaNacimiento"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          >
-            <option value="soltero">Soltero</option>
-            <option value="casado">Casado</option>
-            <option value="divorciado">Divorciado</option>
-            <option value="viudo">Viudo</option>
-          </select>
+          />
         </div>
         <button
           type="submit"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          Nuevo profesor
+          Nuevo Paciente
         </button>
         <button
           type="reset"
@@ -108,29 +108,30 @@ async function profesoresApi() {
         </button>
       </form>
 
-      <br /><br />
+      <br />
+      <br />
 
-      {datosProfesores.map((profesor) => (
+      {datosPacientes.map((Paciente) => (
         <div
           className="flex flex-row gap-4  pt-10 justify-center"
-          key={profesor.id}
+          key={Paciente.id}
         >
-          <p>{profesor.nombre}</p>
+          <p>{Paciente.nombre}</p>
           <form>
-            <input type="hidden" name="id" value={profesor.id} />
-            <button formAction={eliminarProfesor} title="ELIMINAR">
+            <input type="hidden" name="id" value={Paciente.id} />
+            <button formAction={eliminarPaciente} title="ELIMINAR">
               <ShieldX />
             </button>
           </form>
           <form>
-            <input type="hidden" name="id" value={profesor.id} />
-            <button formAction={modificarProfesor} title="EDITAR">
+            <input type="hidden" name="id" value={Paciente.id} />
+            <button formAction={modificarPaciente} title="EDITAR">
               <Pencil />
             </button>
           </form>
           <form>
-            <input type="hidden" name="id" value={profesor.id} />
-            <button formAction={verProfesor} title="VER">
+            <input type="hidden" name="id" value={Paciente.id} />
+            <button formAction={verPaciente} title="VER">
               <Eye />
             </button>
           </form>
@@ -140,4 +141,4 @@ async function profesoresApi() {
   );
 }
 
-export default profesoresApi;
+export default pacientesApi;

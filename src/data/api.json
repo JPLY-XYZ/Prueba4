@@ -11,31 +11,25 @@
       "nombre": "manuela",
       "especialidad": "ginecologa",
       "perfil": "ESPECIALISTA"
-    },
-    {
-      "id": "a00f",
-      "nombre": "andres",
-      "especialidad": "enfermero",
-      "perfil": "RESIDENTE"
     }
   ],
   "pacientes": [
     {
       "nombre": "antonio",
       "localidad": "Lugo",
-      "fecha-nacimiento": "2012-01-23",
+      "fechaNacimiento": "2012-01-23",
       "id": "5b9c"
     },
     {
       "nombre": "Julia",
       "localidad": "Valencia",
-      "fecha-nacimiento": "2021-05-12",
+      "fechaNacimiento": "2021-05-12",
       "id": "5f29"
     },
     {
       "nombre": "jose",
       "localidad": "Madrid",
-      "fecha-nacimiento": "1891-12-23",
+      "fechaNacimiento": "1891-12-23",
       "id": "f9b7"
     }
   ],
