@@ -64,10 +64,11 @@ export async function eliminarDatoApi(endpoint, formData) {
 //MEDICOS
 
 export async function crearMedicoApi(formData) {
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const response = await fetch(`http://localhost:4000/medicos`, {
     method: "POST",
     body: JSON.stringify({
-      nombre: formData.get('nombre'),
+      nombre: formData.get('name'),
       especialidad: formData.get('especialidad'),
       perfil: formData.get('perfil')
     }),
@@ -75,7 +76,7 @@ export async function crearMedicoApi(formData) {
 }
 
 export async function modificarMedicoApi(formData) {
-
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const id = formData.get('id')
   const response = await fetch(`http://localhost:4000/medicos/${id}`, {
     method: "PUT",
@@ -91,6 +92,7 @@ export async function modificarMedicoApi(formData) {
 //PACIENTES
 
 export async function crearPacienteApi(formData) {
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const response = await fetch(`http://localhost:4000/pacientes`, {
     method: "POST",
     body: JSON.stringify({
@@ -102,7 +104,7 @@ export async function crearPacienteApi(formData) {
 }
 
 export async function modificarPacienteApi(formData) {
-
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const id = formData.get('id')
   console.log('id = ', id)
 
@@ -119,6 +121,7 @@ export async function modificarPacienteApi(formData) {
 
 //Consulta de base de datos
 export async function SQLQuery(query) {
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const [data] = await mysql.query(query);
   return data
 }

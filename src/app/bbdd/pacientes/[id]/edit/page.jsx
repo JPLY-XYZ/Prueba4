@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import SubmitButton from "@/components/submit-button";
 import { SQLQuery } from "@/lib/actions";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
@@ -41,7 +42,7 @@ async function editBBDDPaciente({ params }) {
         <label htmlFor="fechanacimiento" className="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
         <input type="date" name="fechanacimiento" defaultValue={paciente.fechaNacimiento.toISOString().split('T')[0]} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
       </div>
-      <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modificar</button>
+      <SubmitButton type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modificar</SubmitButton>
     </form>
 
     

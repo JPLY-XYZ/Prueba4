@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import SubmitButton from "@/components/submit-button";
 import { SQLQuery } from "@/lib/actions";
 import { Eye, ShieldX, Pencil } from "lucide-react";
 import { revalidatePath } from "next/cache";
@@ -7,7 +8,7 @@ import { redirect } from "next/navigation";
 
 async function eliminarMedico(formData) {
   "use server";
-  await SQLQuery("delete from alunos where id=" + formData.get("id"));
+  await SQLQuery("delete from medicos where id=" + formData.get("id"));
   revalidatePath("/api/medicos");
 }
 
@@ -30,7 +31,7 @@ async function crearMedico(formData) {
 
 async function medicosBBDD() {
 
-  const query = "select * from alunos";
+  const query = "select * from medicos";
   const datosMedicos = await  SQLQuery(query);
 
   return (
@@ -90,12 +91,12 @@ async function medicosBBDD() {
             <option value="RESIDENTE">RESIDENTE</option>
           </select>
         </div>
-        <button
+        <SubmitButton
           type="submit"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Nuevo Medico
-        </button>
+        </SubmitButton>
         <button
           type="reset"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

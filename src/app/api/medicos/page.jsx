@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import SubmitButton from "@/components/submit-button";
 import { obtenerDatoApi, eliminarDatoApi, crearMedicoApi } from "@/lib/actions";
 import { Eye, ShieldX, Pencil } from "lucide-react";
 import { revalidatePath } from "next/cache";
@@ -87,12 +88,12 @@ async function medicosApi() {
             <option value="RESIDENTE">RESIDENTE</option>
           </select>
         </div>
-        <button
+        <SubmitButton
           type="submit"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Nuevo Medico
-        </button>
+        </SubmitButton>
         <button
           type="reset"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

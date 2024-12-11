@@ -3,7 +3,7 @@
     {
       "nombre": "alfredA",
       "especialidad": "traumatologoDAD",
-      "perfil": "RESIDENTE",
+      "perfil": "ESPECIALISTA",
       "id": "677f"
     },
     {
@@ -11,6 +11,18 @@
       "nombre": "manuela",
       "especialidad": "ginecologa",
       "perfil": "ESPECIALISTA"
+    },
+    {
+      "id": "76bb",
+      "nombre": "czxcz",
+      "especialidad": "czxczxc",
+      "perfil": "RESIDENTE"
+    },
+    {
+      "nombre": "adsa",
+      "especialidad": "dasdasdfdsfsdf",
+      "perfil": "RESIDENTE",
+      "id": "9cf4"
     }
   ],
   "pacientes": [
